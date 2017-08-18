@@ -1,0 +1,175 @@
+﻿<style>
+    .spaceleft {
+        padding-left: 10px;
+    }
+
+    .row {
+        font-size: 17px;
+        color: #444444;
+    }
+
+    .pane {
+        background-color: #ffffff;
+    }
+</style>
+<style>
+    /* Styles go here */
+
+
+.toggle-text > .track {
+
+  width: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+
+}
+
+.toggle-text .handle {
+  left: 7px;
+}
+
+.toggle-text .handle-text {
+  font-size: 24px;
+  color: white;
+
+  position: absolute;
+  top: -4px;
+  
+}
+
+.toggle-text .handle-text-false {
+  left: 36px;
+}
+
+.toggle-text input:checked + .track .handle {
+  -webkit-transform: none;
+  -moz-transform: none;
+  transform: none;
+  left: calc(100% - 34px);
+  
+/*  -webkit-transform: translate3d(0, 0,0);*/
+}
+.track-text {
+  line-height: 26px;
+  color: white;
+  font-size: 24px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+    .item-toggle .toggle {
+     position: relative; 
+
+}
+</style>
+<style>
+    .icon {
+        font-size: 40px;
+        color: darkslategray;
+    }
+
+    .row {
+        font-size: 15px;
+        color: #444444;
+    }
+
+    .spaceleft {
+        padding-left: 10px;
+    }
+
+    .item-toggle .toggle {
+        position: absolute;
+        top: 0px;
+        right: 40px;
+        z-index: 3;
+    }
+
+    .item {
+        border-color: rgba(221, 221, 221, 0);
+    }
+
+    .toggle-small.item-toggle .toggle {
+        top: 10px !important;
+    }
+</style>
+<ion-view title="Order Assisment" >
+        <ion-nav-bar class="bar bar-header bar-assertive">
+            <ion-nav-buttons side="right">
+               </ion-nav-buttons>
+            <ion-nav-buttons side="left">
+                <!--<ion-toggle toggle-class="toggle-positive"><p style="margin-top:-8px;">Is online</p></ion-toggle>-->
+            </ion-nav-buttons>
+        </ion-nav-bar>
+    <ion-content>            
+        <ion-item ng-repeat="r in itemdetailsredispatched">
+            <div class="col-100" style="background-color: blanchedalmond;">
+                <p>Total ReDispatch Order {{TotalRedispatchOrder}}</p>
+                <div class="row mrgleft">
+                    <div class=""></div>
+                    <p class="spaceleft"> OrderId:-{{r.OrderId}}</p>
+                </div>
+                <div class="row mrgleft">
+                    <div class=""></div>
+                    <p class="spaceleft">Skcode:-{{r.Skcode}}</p>
+                </div>
+                <div class="row mrgleft">
+                    <div class=""></div>
+                    <p class="spaceleft"> Comment:-{{r.comments}}</p>
+                </div>
+
+            </div>
+        </ion-item>
+
+        <ion-item ng-repeat="trades in itemdetails">
+            <div class="col-100" style="background-color: blanchedalmond;">
+                <p>Total canceld order {{TotalCancelOrder}}</p>
+                <p>Total canceld Qty {{TotalCanceledOrderqty}}</p>
+                <div class="row mrgleft">
+                    <div class=""></div>
+                    <p class="spaceleft"> OrderId:-{{trades.OrderId}}</p>
+                </div>
+                <div class="row mrgleft">
+                    <div class=""></div>
+                    <p class="spaceleft">Skcode:-{{trades.Skcode}}</p>
+                </div>
+                <div class="row mrgleft">
+                    <div class=""></div>
+                    <p class="spaceleft"> Comment:-{{trades.comments}}</p>
+                </div>
+              
+            </div>
+        </ion-item>
+          
+        <ion-item ng-repeat="trade in delivereddata">
+            <div class="col-100" style="background-color: blanchedalmond;">
+                <div class="row mrgleft">
+                    <div class=""></div>
+                    <p class="spaceleft"> OrderId:-{{trade.OrderId}}</p>
+                </div>
+                <div class="row mrgleft">
+                    <div class=""></div>
+                    <p class="spaceleft">Skcode:-{{trade.Skcode}}</p>
+                </div>
+                <div class="row mrgleft">
+                    <div class=""></div>
+                    <p class="spaceleft"> Cash Amount:-{{trade.CashAmount}}</p>
+                </div>
+                <div class="row mrgleft">
+                    <div class=""></div>
+                    <p class="spaceleft">Total Amount:-  {{trade.chequeAmount}}</p>
+                </div>
+
+                <div class="row mrgleft">
+                    <div class=""></div>
+                    <p class="spaceleft">  Cheque No:-{{trade.chequeNo}}</p>
+                </div>
+                <div class="row mrgleft">
+                    <div class=""></div>
+                    <p class="spaceleft">Comment:-{{trade.comments}}</p>
+                </div>
+            </div>
+        </ion-item>
+
+    </ion-content>
+     
+</ion-view>
+

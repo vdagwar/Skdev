@@ -1,0 +1,172 @@
+﻿<style>
+    .icon {
+        font-size: 40px;
+        color: darkslategray;
+    }
+
+    .row {
+        font-size: 15px;
+        color: #444444;
+    }
+
+    .spaceleft {
+        padding-left: 10px;
+    }
+
+    .item-toggle .toggle {
+        position: absolute;
+        top: 0px;
+        right: 40px;
+        z-index: 3;
+    }
+
+    .item {
+        border-color: rgba(221, 221, 221, 0);
+    }
+    .toggle-small.item-toggle .toggle {
+     top: 10px!important; 
+}
+
+    .Products Dispatched {
+    background-color:red !important;
+    }
+     .stopWatch {
+	padding: 5px;
+	background: linear-gradient(top, #222, #eee);
+	border: 7px solid #efefef;
+	border-radius: 5px;
+    display: inline-block;
+    margin: 10px auto;
+	
+	box-shadow: 
+		inset 0 -2px 10px 1px rgba(0, 0, 0, 0.75), 
+		0 5px 20px -10px rgba(0, 0, 0, 1);
+}
+.numbers {
+    font-size: 30px;
+	line-height: 40px;
+	font-family: digital, arial, verdana;
+	color: black;
+}
+
+    @font-face {
+        font-family: 'digital';
+    }
+
+
+
+</style>
+<ion-view title="<i class='ion-ios-timer icon_colour1'></i>&nbsp;&nbsp;My Tasks">
+    <ion-nav-bar class="bar bar-header bar-assertive">
+        <ion-nav-buttons side="right">
+            <a href="#/map"><i class="icon ion-android-map"></i></a>&nbsp;
+            <!--<a href="#/notification"><i class="icon ion-android-notifications"></i></a>-->
+         <button class="button button-icon ion-android-more-vertical" ng-click="showdetails()"></button>
+
+            <!--<button ng-click="nearme()">Click</button>-->
+        </ion-nav-buttons>
+        <ion-nav-buttons >
+            <button class="button button-icon icon ion-loop" ng-click="gettasks()"></button>
+            <!--<button class="button button-icon icon ion-loop" ng-click="gettaskss()">second</button>-->
+            <!--<ion-toggle toggle-class="toggle-positive"><p style="margin-top:-8px;">Is online</p></ion-toggle>-->
+        </ion-nav-buttons>
+    </ion-nav-bar>
+        <ion-content>
+            <!--<div class="row" style="margin-top:54px;">
+                <div class="bar bar-header">
+                    <div class="abc"></div>
+                    <div class="col-10 col-offset-10">
+                        <a href="#/notification"><i class="icon ion-android-notifications"></i></a>
+                    </div>
+                    <div class="col-10 col-offset-10">
+                        <a href="#/calander"><i class="icon ion-android-calendar"></i></a>
+                    </div>
+                    <div class="col-10 col-offset-10">
+                        <i class="icon ion-android-more-vertical" ng-click="showdetails()"></i>
+                    </div>
+                </div>
+            </div>-->
+            <ion-item class="item">
+                <!--<button class="button button-small button-balanced" style="margin-top:15px;" ng-click="startTimer()">Start</button>-->
+                <!--for timer watches-->
+                <div ng-repeat="options in stopwatches">
+                    <div bb-stopwatch options="options">
+                        <div class="container">
+                            <div class="stopWatch numbers">
+                                {{options.elapsedTime | stopwatchTime}}
+                            </div>
+                            <button class="button button-small button-balanced" style="margin-top:23px;" ng-click="startTimer()">Start</button>&nbsp;&nbsp;
+                            <!--<button class="btn" ng-click="stopTimer()">Stop</button>
+                    <button class="btn" ng-click="resetTimer()">Reset</button>-->
+
+            </ion-item>
+                <!--<ion-item class="item"ng-click="gettaskdetails(task)" style="background-color:#E7E7E7; display:flex; padding-bottom:1%;margin:3px;" ng-repeat="task in Tasks">-->
+            <ion-item class="item" style="background-color:#E7E7E7; display:flex; padding-bottom:1%;margin:3px;" ng-repeat="task in Tasks">
+           
+             <div class="col-75">
+                            <div class="row">
+                                <div class="ion-ios-person"></div>
+                                <p class="spaceleft"> {{task.ShopName}}</p>
+                            </div>
+                            <div class="row">
+                                <div class="ion-location"></div>
+                                <p class="spaceleft"> {{task.ShippingAddress}}</p>
+                            </div>
+                            <div class="row">
+                                <div class="ion-android-locate"> </div>
+                                    <p  class="spaceleft">  {{task.ClusterName}}</p>
+                            </div>
+                            <div class="row">
+                                <div class="ion-android-time"></div>
+                                    <p class=" spaceleft">  {{task.CreatedDate}}</p>
+                            </div>
+                            <div class="row">
+                                <div class="ion-android-time"></div>
+                                <p class=" spaceleft">  {{task.OrderId}}</p>
+                            </div>
+
+                            <div class="row">
+                                <!--<div class="ion-android-time"></div>
+                                <div class="col-75">
+                                    <p class="spaceleft">{{task.OrderId}}</p>
+                                </div>-->
+                                <!--<div class="col-25" ng-if="task.Status == 'Products Dispatched'">ng-if="task.Status == 'Delivered'"
+                                    <button class="button button-small button-balanced" style="margin-top:15px;">Products Dispatched</button>
+                                </div>-->
+
+                                <div class="col-25" ng-show="(task.Status=='Shipped')">
+                                    <!--<button class="button button-small button-assertive" style="margin-top:15px;" ng-click="gettaskdetails(task)">{{task.Status}}</button>-->
+                                    <button class="button button-small button-assertive" style="margin-top:15px;" ng-click="gettaskdetails(task)">Open Order</button>
+                                </div>
+                                <div class="col-25" ng-show="(task.Status=='Delivered')">
+                                    <button class="button button-small button-balanced" style="margin-top:15px;" >{{task.Status}}</button>
+                                </div>
+                                <div class="col-25" ng-show="(task.Status=='Delivery Redispatch')">
+                                    <button class="button button-small button-royal" style="margin-top:15px;" ng-click="gettaskdetails(task)">{{task.Status}}</button>
+                                </div>
+                                <div class="col-25" ng-show="(task.Status=='Delivery Canceled')">
+                                    <button class="button button-small button-royal" style="margin-top:15px;" ng-click="gettaskdetails(task)">{{task.Status}}</button>
+                                </div>
+
+                                <!--<div class="col-25" ng-if="task.Status == 'Pending'">
+                                    <button class="button button-small button-royal" style="margin-top:15px;">Started</button>
+                                </div>-->
+                            </div>
+
+                        </div>
+
+
+             </ion-item>
+            <ion-item class="item">
+                <button class="button button-small button-dark" ng-disabled="!stp" style="margin-top:30px;" ng-click="stopTimer()">Stop</button>&nbsp;
+                <button class="button button-small button-dark" style="float:right;margin-top:30px;" ng-click="gettaskOL()">Incomplete Tasks</button>&nbsp;&nbsp;
+                <button class="button button-small button-dark" style="margin-top:30px;" ng-click="getcurrency()">Currency</button>
+                <!--<button class="button button-small button-dark" style="margin-top:15px;" ng-click="resetTimer()">Reset</button>-->
+            </ion-item>
+
+            <div class="log" ng-repeat="log in options.log">
+                {{log/1000}} seconds
+            </div>
+        </ion-content>
+
+</ion-view>

@@ -1,0 +1,184 @@
+﻿<style>
+    .icon {
+        font-size: 40px;
+        color: darkslategray;
+    }
+
+    .row {
+        font-size: 15px;
+        color: #444444;
+    }
+
+    .spaceleft {
+        padding-left: 10px;
+    }
+
+    .item-toggle .toggle {
+        position: absolute;
+        top: 0px;
+        right: 40px;
+        z-index: 3;
+    }
+
+    .item {
+        border-color: rgba(221, 221, 221, 0);
+    }
+
+    .toggle-small.item-toggle .toggle {
+        top: 10px !important;
+    }
+</style>
+<style>
+   .header {
+    margin-top: 5px;
+    background-color: lightgray;
+    }
+    .row1 {
+    margin-top :5px;
+    }
+</style>
+
+
+<ion-view title="Issuances">
+    <ion-nav-bar class="bar bar-header bar-assertive">
+        <ion-nav-buttons side="right">
+            <!--<a href="#/calander"><i class="icon ion-android-calendar"></i></a>&nbsp;-->
+            
+            <button class="button button-icon ion-android-more-vertical" ng-click="showdetails()"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="left">
+            <button class="button button-icon icon ion-loop" ng-show="showassignments" ng-click="getisuancelist()"></button>
+            <!--<ion-toggle toggle-class="toggle-positive"><p style="margin-top:-8px;">Is online</p></ion-toggle>-->
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content ng-show="showassignments">
+        <div class="row">
+            <div class="col-55">
+                <button class="button button-icon ion-loop" ng-click="getclosedissuance()">Get closed Issuance</button>
+            </div>
+        </div>
+            <div class="list card" ng-repeat="task in DeliveryIssuance">
+                <div class="row">
+                    <div class="col-75">
+                        <div class="row">
+                            <div class="ion-android-time">&nbsp;Created Date:</div>
+                            <p class="spaceleft">{{task.CreatedDate | date : format : "shortDate"}}</p>
+                        </div>
+
+                        <div class="row">
+                            <div class="ion-ios-box">&nbsp;Status:</div>
+                            <p class="spaceleft">{{task.Status}}</p>
+                        </div>
+
+                        <div class="row">
+                            <div class="ion-location">&nbsp;VehicleNumber:</div>
+                            <p class="spaceleft">{{task.VehicleNumber}}</p>
+                        </div>
+                        <div class="row">
+                            <div class="ion-speedometer">&nbsp;Estimated Time:</div>
+                            <p class="spaceleft">{{task.IdealTime}} Mins</p>
+                        </div>
+                    </div>
+                    <div class="col-25">
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="list col-90">
+                        <button class="button button-small button-dark" ng-click="showproducts(task.DeliveryIssuanceId)" style="margin-top:15px;">Products list</button>
+                        <button class="button button-small button-assertive" ng-hide="oldissuelist" ng-click="Accept(task)" style="margin-top:15px;">Accept</button>
+                        <button class="button button-small button-assertive" ng-hide="oldissuelist" ng-click="rejreason(task.DeliveryIssuanceId)" style="margin-top:15px;">Reject reason</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-90" id="Rej{{task.DeliveryIssuanceId}}" style="display:none">
+                        
+                        <div class="col-50">
+                            <textarea id="rsn{{task.DeliveryIssuanceId}}" placeholder="Canceling Reason"></textarea>
+                        </div>
+                        <div class="col-50">
+                            <button class="button button-small button-assertive" ng-click="Reject(task)" style="margin-top:15px;">Reject</button>
+                            <button class="button button-small button-assertive" ng-click="Cancel(task.DeliveryIssuanceId)" style="margin-top:15px;">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="list col-90" id="{{task.DeliveryIssuanceId}}" style="display:none">
+                        <button class="button button-small button-dark" side="right" ng-click="hideproducts(task.DeliveryIssuanceId)" style="margin-top:15px;">Hide list</button>
+                        <br/>
+                        <div class="row header">
+                            <div class="col-50 header">Product Name</div>
+                            <div class="col-50 header">Quantity</div>
+                        </div>
+                        <div class="row" ng-repeat="prod in task.details">
+                            <div class="col-50 row1">{{prod.itemname}}</div>
+                            <div class="col-50 row1">{{prod.qty}}</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    
+
+
+
+
+    </ion-content>
+    <ion-content ng-hide="showassignments" >
+        <ion-item>
+            <p>Complete the tasks and press Stop to show Assignments</p>
+        </ion-item>
+    </ion-content>
+
+</ion-view>
+
+<!--<ion-content>
+    <div class="row" ng-repeat="task in DeliveryIssuance">
+        <ion-item class="item" style="background-color:#E7E7E7; display:flex; padding-bottom:1%;margin:3px;">
+            <div class="row">
+                <div class="col-75">
+                    <div class="row">
+                        <div class="ion-android-time"></div>
+                        <p class="spaceleft">{{task.CreatedDate}}</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="ion-ios-person"></div>
+                        <p class="spaceleft">{{task.Acceptance}}</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="ion-location"></div>
+                        <p class="spaceleft">{{task.VehicleNumber}}</p>
+                    </div>
+                </div>
+                <div class="col-25">
+                    <button class="button button-small button-royal" ng-click="showproducts(task.DeliveryIssuanceId)" style="margin-top:15px;">Products list</button>
+                    <button class="button button-small button-royal" ng-click="Accept(task)" style="margin-top:15px;">Accept</button>
+                    <button class="button button-small button-royal" ng-click="Reject(task)" style="margin-top:15px;">Reject</button>
+                </div>
+            </div>
+        </ion-item>
+        <div class="row">
+            <ion-item>
+                <div id="{{task.DeliveryIssuanceId}}" style="display:none">
+                    <div class="row">
+                        <button class="button button-small button-royal" ng-click="hideproducts(task.DeliveryIssuanceId)" style="margin-top:15px;">Hide list</button>
+                        <br />
+                    </div>
+                    <div class="row header">
+                        <div class="col-40">Product Name</div>
+                        <div class="col-40">Quantity</div>
+                    </div>
+                    <div class="row" ng-repeat="prod in task.details">
+                        <div class="col-40">{{prod.itemname}}</div>
+                        <div class="col-40">{{prod.qty}}</div>
+                    </div>
+                </div>
+            </ion-item>
+        </div>
+
+
+    </div>
+
+</ion-content>-->

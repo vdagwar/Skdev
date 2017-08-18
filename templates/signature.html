@@ -1,0 +1,47 @@
+﻿
+<style>
+    body {
+        font-family: arial;
+        background-color: #656565;
+        text-align: center;
+        margin: auto;
+    }
+
+    canvas#thecanvas {
+        border: dashed 1px #333;
+        cursor: pointer;
+        background-color: rgba(255,255,255,.85);
+        width: 475px;
+        height: 225px;
+    }
+
+    div.buttons {
+        text-align: center;
+        width: 477px;
+        background-color: rgba(255,255,255,.85);
+        position: relative;
+        top: -3px;
+        margin: auto;
+    }
+
+        div.buttons button {
+            padding: 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+    label {
+        margin-top: 25px;
+        width: 467px;
+        padding: 5px;
+        text-align: left;
+        display: inline-block;
+        background-color: rgba(255,255,255,.85);
+    }
+</style>
+<label>Sign On the Line Below:</label><br />
+<canvas id="thecanvas" style="width:400px; height:225px"></canvas>
+<div class="buttons">
+    <button class="save">Save</button>
+    <button class="clear">Clear</button>
+</div>

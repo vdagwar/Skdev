@@ -1,0 +1,81 @@
+<style>
+    .companylogo {
+        width: 60%;
+        height: 35%;
+        margin-top: 18%;
+        margin-left: 18%;
+    }
+
+    * {
+        font-family: Verdana, monospace;
+    }
+
+    body {
+        background: url('http://subtlepatterns.com/patterns/congruent_outline.png') repeat 0 0;
+        font-family: Verdana, monospace;
+    }
+
+    section {
+        background: #fff;
+        box-shadow: 2px 2px 0 1px rgba(0, 0, 0, .1);
+        margin: 3em auto;
+        padding: 2em;
+        width: 600px;
+    }
+
+    input {
+        font-size: 1em;
+        padding: 1em;
+    }
+</style>
+<ion-view title="Login">
+    <ion-nav-bar class="bar-stable"></ion-nav-bar>
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <form class="list">
+            <img class="companylogo" style="margin-top: 15px;" src="http://shopkirana.com/wp-content/uploads/2015/07/ShopKirana-Logo21.png" />
+            <div class="text-center" style="margin-top: 5px;">
+                <h4 style="color: #4D4E4E;font-size: medium;text-transform: uppercase;">Delivery App</h4>
+            </div>
+            <ion-list>
+                <label class="item item-input">
+                    <span class="input-label">Mobile</span>
+                    <input type="number" ng-model="person.Mobile" placeholder="Enter number ">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input type="password" ng-model="person.Password" placeholder="Enter password">
+                </label>
+                <ion-checkbox class="checkbox-assertive">Remember Me</ion-checkbox>
+            </ion-list>
+
+
+            <button style="background-color:#ED5124!important;color: white;" class="button button-block" ng-click="signin(person)">Log in</button>
+            <!-- <a href="#/signup" class="button button-positive button-clear button-block ">Or create an account</a>
+             <a href="#/forgetpassword" class="button button-positive button-clear button-block ">Forget Password?</a>-->
+        </form>
+    </ion-content>
+</ion-view>
+
+
+
+<!--<ion-view title="Login">
+    <ion-nav-bar class="bar-stable"></ion-nav-bar>
+        <ion-content overflow-scroll="true" padding="true" class="has-header">
+            <form class="list">
+                <ion-list>
+                    <label class="item item-input">
+                        <span class="input-label">Username</span>
+                        <input type="number" ng-model="person.Mobile" placeholder="enter number">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Password</span>
+                        <input type="password" ng-model="person.Password" placeholder="enter password">
+                    </label>
+                    <ion-checkbox>Remember Me</ion-checkbox>
+                </ion-list>
+                <button class="button button-positive button-block" ng-click="signin(person)">Log in</button>
+                <a href="#/signup" class="button button-positive button-clear button-block ">Or create an account</a>
+                <a href="#/forgetpassword" class="button button-positive button-clear button-block ">Forget Password?</a>
+            </form>
+        </ion-content>
+</ion-view>-->

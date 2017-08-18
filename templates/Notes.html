@@ -1,0 +1,81 @@
+﻿<style>
+    .icon {
+        font-size: 40px;
+        color: darkslategray;
+    }
+
+    .row {
+        font-size: 15px;
+        color: #444444;
+    }
+
+    .spaceleft {
+        padding-left: 10px;
+    }
+
+    .item-toggle .toggle {
+        position: absolute;
+        top: 0px;
+        right: 40px;
+        z-index: 3;
+    }
+
+    .item {
+        border-color: rgba(221, 221, 221, 0);
+    }
+
+    .toggle-small.item-toggle .toggle {
+        top: 10px !important;
+    }
+</style>
+<ion-view>
+    <ion-nav-bar class="bar-calm">
+        <ion-nav-buttons side="right">
+            <button class="button button-icon ion-android-more-vertical" ng-click="showdetails()"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="left">
+            <a href="#/calander"><i class="icon ion-android-calendar"></i></a>&nbsp;
+            <a href="#/notification"><i class="icon ion-android-notifications"></i></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+        <ion-content>
+                <ion-item class="item" style="background-color:#E7E7E7; display:flex; padding-bottom:1%;margin:3px;" >
+                        <div class="col-75">
+                            <div class="row">
+                                <div class="ion-ios-person"></div>
+                                <p class="spaceleft">Note!</p>
+                            </div>
+                            <div class="row">
+                                <div class="ion-location"></div>
+                                <p class="spaceleft">CreatedDate</p>
+                            </div>
+                        </div>
+             </ion-item>
+            <ion-item class="item" style="background-color:#E7E7E7; display:flex; padding-bottom:1%;margin:3px;">
+                <div class="col-75">
+                    <div class="row">
+                        <div class="ion-ios-person"></div>
+                        <p class="spaceleft">Note2</p>
+                    </div>
+                    <div class="row">
+                        <div class="ion-location"></div>
+                        <p class="spaceleft">CreatedDate</p>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-content>
+
+    <form name="sendMessageForm" ng-submit="sendMessage(sendMessageForm)" novalidate>
+        <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+            <label class="item-input-wrapper">
+                <textarea ng-model="input.message" value="" placeholder="Send {{toUser.username}} a message..." required minlength="1" maxlength="1500" msd-elastic></textarea>
+            </label>
+            <div class="footer-btn-wrap">
+                <button class="button button-icon icon ion-android-send footer-btn" type="submit"
+                        ng-disabled="!input.message || input.message === ''"></button>
+            </div>
+        </ion-footer-bar>
+    </form>
+
+
+</ion-view>

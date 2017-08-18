@@ -1,0 +1,35 @@
+﻿<style>
+    .icon{
+        font-size:15px;
+    }
+</style>
+
+<ion-view title="Profile">
+    <ion-nav-bar class="bar bar-header bar-assertive"><ion-nav-back-button class="button-icon icon ion-ios-arrow-back">Back</ion-nav-back-button></ion-nav-bar>
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+
+         <div style="line-height:0px; border: 1px solid rgb(238, 238, 238); border-radius: 3px; text-align: center; background-color: rgb(255, 255, 255);">
+            <img src="../img/11.jpg" alt="Smiley face" style="width:300px; height:auto">
+            <!--<i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>-->
+        </div>
+        <div class="button-bar">
+            <button class="button button-light button-block  icon-left ion-ios-person">Personal</button>
+            <button class="button button-light button-block  icon-right ion-android-bicycle">Vehical</button>
+        </div>
+        <div class="col">
+            <i class="icon ion-person-stalker"> Team: Delivery </i>
+            <div class="spacer" style="width: 283px; height: 20px;"></div>
+            <i class="icon ion-ios-email"> Name: {{ClientData.DisplayName}}</i>
+            <div class="spacer" style="width: 283px; height: 20px;"></div>
+            <i class="icon ion-android-call"> {{ClientData.Mobile}}</i>
+        </div>
+        <!--<div class="spacer" style="width: 283px; height: 110px;"></div>
+       <button class="button button-positive button-block" onclick="window.location.href = '#/changepass'">Change Password</button>-->
+        <div class="row">
+            <div class="col-55">
+                <!--<button class="button button-icon ion-loop" ng-click="stoptimer()">Stop GPS</button>
+                <button class="button button-icon ion-loop" ng-click="Starttimer()">Start GPS</button>-->
+            </div>
+        </div>
+</ion-content>
+</ion-view>

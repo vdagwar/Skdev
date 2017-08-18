@@ -1,0 +1,235 @@
+﻿<style>
+    .spaceleft {
+        padding-left: 10px;
+    }
+
+    .row {
+        font-size: 17px;
+        color: #444444;
+    }
+
+    .pane {
+        background-color: #ffffff;
+    }
+</style>
+<style>
+    /* Styles go here */
+
+
+.toggle-text > .track {
+
+  width: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+
+}
+
+.toggle-text .handle {
+  left: 7px;
+}
+
+.toggle-text .handle-text {
+  font-size: 24px;
+  color: white;
+
+  position: absolute;
+  top: -4px;
+  
+}
+
+.toggle-text .handle-text-false {
+  left: 36px;
+}
+
+.toggle-text input:checked + .track .handle {
+  -webkit-transform: none;
+  -moz-transform: none;
+  transform: none;
+  left: calc(100% - 34px);
+  
+/*  -webkit-transform: translate3d(0, 0,0);*/
+}
+.track-text {
+  line-height: 26px;
+  color: white;
+  font-size: 24px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+    .item-toggle .toggle {
+     position: relative; 
+
+}
+</style>
+<style>
+    .icon {
+        font-size: 40px;
+        color: darkslategray;
+    }
+
+    .row {
+        font-size: 15px;
+        color: #444444;
+    }
+
+    .spaceleft {
+        padding-left: 10px;
+    }
+
+    .item-toggle .toggle {
+        position: absolute;
+        top: 0px;
+        right: 40px;
+        z-index: 3;
+    }
+
+    .item {
+        border-color: rgba(221, 221, 221, 0);
+    }
+
+    .toggle-small.item-toggle .toggle {
+        top: 10px !important;
+    }
+</style>
+<ion-view title="Task Details" >
+        <ion-nav-bar class="bar bar-header bar-assertive">
+            <ion-nav-buttons side="right">
+               </ion-nav-buttons>
+            <ion-nav-buttons side="left">
+                <!--<ion-toggle toggle-class="toggle-positive"><p style="margin-top:-8px;">Is online</p></ion-toggle>-->
+            </ion-nav-buttons>
+        </ion-nav-bar>
+    <ion-content>
+        
+        <div class="view-container" style="background-color:#fff; margin-top:35px;">
+            <div class="col">
+                <div class="row">
+                    <!--<div class="ion-android-cart"></div>-->
+                    <div class="col-25"> Order No: </div>
+                    <p class="spaceleft">{{details.OrderId}}</p>
+                </div>
+                <div class="row">
+                    <div class="ion-android-time"></div>
+                    <p class="spaceleft">{{details.CreatedDate | date:'medium'}}</p>
+                </div>
+
+                <!--<div class="row">
+                    <div class="ion-ios-person"></div>
+                    <p class="spaceleft">{{details.CustomerName}}</p>
+                </div>-->
+                <div class="row">
+                    <div class="ion-ios-person"></div>
+                    <p class="spaceleft">{{details.ShopName}}</p>
+                </div>
+                <div class="row">
+                    <div class="ion-cash"></div>
+                    <p class="spaceleft">{{details.GrossAmount}}</p>
+                </div>
+
+                <div class="row">
+                    <div class="ion-location"></div>
+                    <p class="spaceleft">{{details.ShippingAddress}}</p><!--<a href="#/route"><div class="spaceleft ion-ios-arrow-right" style="position:fixed; right:10px;"></div></a>-->
+                </div>
+                <label class="item item-input item-select ">
+                    <div class="input-label">
+                        Status :-{{details.Status}}
+                    </div>
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Comment:-{{details.comments}}
+                    </div>
+                </label>
+                <!--<div class="row">
+                    <div class="ion-document-text"></div><div>
+                        <p class="spaceleft">Task Description:</p>
+                    </div>
+                    <p class="spaceleft">Baby is sleeping please do not ring the bell</p>
+                </div>-->
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col font" style="padding-top:15px">Items Details :</div>
+            </div>
+            <div class="header-item item item-divider">
+                <div class="row">
+                    <!--<div class="col-20"></div>-->
+                    <div class="col col-45 responsive-sm item-text-wrap">Item</div>
+                    <div class="col col-22 responsive-sm item-text-wrap">Quantity</div>
+                    <div class="col col-28 responsive-sm item-text-wrap">Price</div>
+                </div>
+
+            </div>
+            <ion-item ng-repeat="order in details.orderDetails">
+                <div class="row">
+
+                    <!--<div class="col-20">
+                        <img src='http://ec2-54-214-137-77.us-west-2.compute.amazonaws.com/../../images/itemimages/{{order.LogoUrl}}.jpg'
+                             class="mycss" onError="this.onerror = null; this.src = 'img/logoicon.png';" />
+                    </div>-->
+                    <div class="col col-45 responsive-sm item-text-wrap" style="font-size: 15px;font-weight: 300;">{{order.itemname}}</div>
+                    <div class="col col-22">{{order.qty}}</div>
+                    <div class="col col-28 responsive-sm item-text-wrap" style="padding-right:10px;">{{order.qty * order.UnitPrice |number:2}}</div>
+                </div>
+            </ion-item>
+
+            <hr>
+            <!-- for delivered updates-->
+            <div class="list">
+                <!--<label class="item item-input item-select ">
+                    <div class="input-label">
+                        Status :-{{details.Status}}
+                    </div>
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Comment:-{{details.comments}}
+                    </div>
+                </label>-->
+                <label class="item item-input item-divider">
+                    <div class="input-label">
+                        Cash Amount:-{{details.CashAmount}}
+                    </div>
+                </label>
+                <label class="item item-input">
+                    <div class="input-label">
+                        Cheque Amount:-{{details.CheckAmount}}
+                    </div>
+                </label>
+                <label class="item item-input item-divider">
+                    <div class="input-label">
+                        Cheque Number:-{{details.CheckNo}}
+                    </div>
+                </label>
+                <label class="item item-input">
+                    <div class="input-label">
+                        Electronic Payment Amount:-{{details.ElectronicAmount}}
+                    </div>
+                </label>
+                <label class="item item-input item-divider">
+                    <div class="input-label">
+                        Electronic Payment Number:-{{details.ElectronicPaymentNo}}
+                    </div>
+                </label>
+                <label class="item item-input">
+                    <div class="input-label">
+                        Amount Recieved:-{{details.RecivedAmount}}
+                    </div>
+                </label>
+                <div class="row item-divider">
+                    <div class="col-90" style="display:inline;padding-left: 25px;">
+                        <div class="col-50">
+                            <input ng-model="details.comments" placeholder="comments" rows="4" cols="50" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </ion-content>
+     
+
+
+</ion-view>
+

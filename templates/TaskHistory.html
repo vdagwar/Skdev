@@ -1,0 +1,154 @@
+﻿<style>
+    .icon {
+        font-size: 40px;
+        color: darkslategray;
+    }
+
+    .row {
+        font-size: 15px;
+        color: #444444;
+    }
+
+    .spaceleft {
+        padding-left: 10px;
+    }
+
+    .item-toggle .toggle {
+        position: absolute;
+        top: 0px;
+        right: 40px;
+        z-index: 3;
+    }
+
+    .item {
+        border-color: rgba(221, 221, 221, 0);
+    }
+    .toggle-small.item-toggle .toggle {
+     top: 10px!important; 
+}
+
+    .Products Dispatched {
+    background-color:red !important;
+    }
+     .stopWatch {
+	padding: 5px;
+	background: linear-gradient(top, #222, #eee);
+	border: 7px solid #efefef;
+	border-radius: 5px;
+    display: inline-block;
+    margin: 10px auto;
+	
+	box-shadow: 
+		inset 0 -2px 10px 1px rgba(0, 0, 0, 0.75), 
+		0 5px 20px -10px rgba(0, 0, 0, 1);
+}
+.numbers {
+    font-size: 30px;
+	line-height: 40px;
+	font-family: digital, arial, verdana;
+	color: black;
+}
+
+    @font-face {
+        font-family: 'digital';
+    }
+</style>
+
+<style>
+    .mrgleft {
+    margin-left:15px;
+    font-weight:700;
+    font-size:35px;
+    }
+</style>
+<ion-view title="<i class='ion-ios-timer icon_colour1'></i>&nbsp;&nbsp;My History">
+    <ion-nav-bar class="bar bar-header bar-assertive">
+        <ion-nav-buttons side="right">
+         <button class="button button-icon ion-android-more-vertical" ng-click="showdetails()"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons >
+        </ion-nav-buttons>
+    </ion-nav-bar>
+        <ion-content>
+            <ion-item>
+                <div class="row">
+                    <div class="col-45">
+                        Start Date:-<input id="start" type="date" ng-model="start"/>
+                    </div>
+                    <div class="col-10">To
+                    </div>
+                    <div class="col-45">
+                        End Date:-<input  id="end" type="date" ng-model="end"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="" style="margin-left:75%;">
+                        <button class="button button-small button-balanced" ng-click="gettasks()">Get data</button>
+                    </div>
+                </div>
+            </ion-item>
+            <ion-item ng-repeat="obj in TasksHistory">
+                <div class="col-100" style="background-color: blanchedalmond;">
+                    <div class="row mrgleft">
+                        <div class=""></div>
+                        <p class="spaceleft">Issuance Status:-{{obj.deliveryIssuance.Status}}</p>
+                    </div>
+                    <div class="row mrgleft">
+                        <div class=""></div>
+                        <p class="spaceleft">Issuance Date:-{{obj.deliveryIssuance.CreatedDate| date:'dd-MM-yyyy'}}</p>
+                    </div>
+                    <div class="row mrgleft">
+                        <div class=""></div>
+                        <p class="spaceleft">Total Amount:-  {{obj.totalcash}}</p>
+                    </div>
+                    <div class="row mrgleft">
+                        <div class=""></div>
+                        <p class="spaceleft">No of orders Delivered:-{{obj.Delivered}}</p>
+                    </div>
+                    <div class="row mrgleft">
+                        <div class=""></div>
+                        <p class="spaceleft">No of orders Canceled:-{{obj.Canceled}}</p>
+                    </div>
+                </div>
+                <ion-item class="item"  style="background-color:#E7E7E7; display:flex; padding-bottom:1%;margin:3px;" ng-repeat="task in obj.Orders">
+                    <div class="col-75">
+                        <div class="row">
+                            <div class="ion-ios-person"></div>
+                            <p class="spaceleft"> {{task.ShopName}}</p>
+                        </div>
+                        <div class="row">
+                            <div class="ion-location"></div>
+                            <p class="spaceleft"> {{task.ShippingAddress}}</p>
+                        </div>
+                        <div class="row">
+                            <div class="ion-android-locate"> </div>
+                            <p class="spaceleft">  {{task.ClusterName}}</p>
+                        </div>
+                        <div class="row">
+                            <div class="ion-android-time"></div>
+                            <p class="spaceleft">Order Date:-{{task.CreatedDate| date:'dd-MM-yyyy'}}</p>
+                        </div>
+                        <div class="row">
+                            <div class="ion-android-time"></div>
+                            <p class="spaceleft">Delivery Date:-{{task.UpdatedDate | date:'dd-MM-yyyy'}}</p>
+                        </div>
+                        <div class="row">
+                            <div class="ion-android-time"></div>
+                            <p class="spaceleft">  {{task.OrderId}}</p>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-25" ng-show="(task.Status=='Delivered'||task.Status=='sattled')">
+                                <button class="button button-small button-balanced" style="margin-top:15px;" ng-click="gettaskdetails(task)">{{task.Status}}</button>
+                            </div>
+                            <div class="col-25" ng-show="(task.Status=='Delivery Canceled'||task.Status=='Delivery Redispatch'||task.Status=='Order Canceled')">
+                                <button class="button button-small button-royal" style="margin-top:15px;" ng-click="gettaskdetails(task)">{{task.Status}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </ion-item>
+            </ion-item>
+
+               
+        </ion-content>
+</ion-view>

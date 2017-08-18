@@ -1,0 +1,303 @@
+﻿<style>
+    .icon {
+        font-size: 40px;
+        color: darkslategray;
+    }
+
+    .row {
+        font-size: 15px;
+        color: #444444;
+    }
+
+    .spaceleft {
+        padding-left: 10px;
+    }
+
+    .item-toggle .toggle {
+        position: absolute;
+        top: 0px;
+        right: 40px;
+        z-index: 3;
+    }
+
+    .item {
+        border-color: rgba(221, 221, 221, 0);
+    }
+
+    .toggle-small.item-toggle .toggle {
+        top: 10px !important;
+    }
+</style>
+<style>
+    .header {
+        margin-top: 5px;
+        background-color: lightgray;
+    }
+
+    .row1 {
+        margin-top: 5px;
+    }
+</style>
+<style>
+    .icon {
+        font-size: 40px;
+        color: darkslategray;
+    }
+
+    .row {
+        font-size: 15px;
+        color: #444444;
+    }
+
+    .spaceleft {
+        padding-left: 10px;
+    }
+
+    .item-toggle .toggle {
+        position: absolute;
+        top: 0px;
+        right: 40px;
+        z-index: 3;
+    }
+
+    .item {
+        border-color: rgba(221, 221, 221, 0);
+    }
+
+    .toggle-small.item-toggle .toggle {
+        top: 10px !important;
+    }
+
+    .Products Dispatched {
+        background-color: red !important;
+    }
+
+    .stopWatch {
+        padding: 5px;
+        background: linear-gradient(top, #222, #eee);
+        border: 7px solid #efefef;
+        border-radius: 5px;
+        display: inline-block;
+        margin: 10px auto;
+        box-shadow: inset 0 -2px 10px 1px rgba(0, 0, 0, 0.75), 0 5px 20px -10px rgba(0, 0, 0, 1);
+    }
+
+    .numbers {
+        font-size: 30px;
+        line-height: 40px;
+        font-family: digital, arial, verdana;
+        color: black;
+    }
+
+    @font-face {
+        font-family: 'digital';
+    }
+</style>
+<ion-view title="<i class='ion-ios-timer icon_colour1'></i>&nbsp;&nbsp;My Currency">
+    <ion-nav-bar class="bar bar-header bar-assertive">
+        <ion-nav-buttons side="right">
+            <a href="#/map"><i class="icon ion-android-map"></i></a>&nbsp;
+            
+            <button class="button button-icon ion-android-more-vertical" ng-click="showdetails()"></button>
+
+        </ion-nav-buttons>
+      
+    </ion-nav-bar>
+  
+
+    <ion-content>
+
+
+
+        <div class="view-container" style="background-color:#fff; margin-top:35px;">
+            
+            <div class="row">
+                <div class="col font" style="padding-top:15px">Enter assignment amount Below :{{DeliveryIssuance}}</div>
+            </div>
+            <div class="header-item item item-divider">
+             
+                <div class="header-item item item-divider">
+                    <div class="row">
+                        <div class="col col-25 responsive-sm item-text-wrap">Label</div>
+                        <div class="col col-22 responsive-sm item-text-wrap">No. Coin</div>
+                        <div class="col col-53 responsive-sm item-text-wrap">Coin Total</div>
+                    </div>
+                </div>
+                <ion-item>
+                    <div class="row">
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                            1X.
+                            </div>
+                        <div class="col col-15 responsive-sm item-text-wrap">
+               <input type="number" style="border:1px solid lightgray;"  ng-model="data.onerscount" placeholder="1 coin" ng-change="calculat1(data.onerscount)" />
+                        </div>
+						
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                            <input  type="number" style="text-align:center;" id="cashamt" readonly  ng-model="OneRupeeTotal" />
+                        </div>
+                        </div>
+                </ion-item>
+                <ion-item>
+                    <div class="row">
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                            2X.
+                        </div>
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                <input type="number" style="border:1px solid lightgray;" ng-model="data.tworscount" placeholder="2 coin" ng-change="calculat2(data.tworscount)"  />
+                        </div>
+						 <div class="col col-15 responsive-sm item-text-wrap">
+                            <input  type="number" style="text-align:center;" id="cashamt" readonly  ng-model="TwoRupeeTotal" />
+                        </div>
+                       
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div class="row">
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                            5X.
+                        </div>
+                        <div class="col col-15 responsive-sm item-text-wrap">
+      <input type="number" style="border:1px solid lightgray;" ng-model="data.fiverscount" placeholder="5 coin" ng-change="calculat5(data.fiverscount)"  />
+                        </div>
+                    <div class="col col-15 responsive-sm item-text-wrap">
+                            <input  type="number" style="text-align:center;" id="cashamt" readonly  ng-model="FiveRupeeTotal" />
+                        </div>
+						
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div class="row">
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                            10X.
+                        </div>
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                <input type="number" style="border:1px solid lightgray;" ng-model="data. tenrscount" placeholder="10 coin" ng-change="calculat10(data. tenrscount)"/>
+                        </div>
+						<div class="col col-15 responsive-sm item-text-wrap">
+                            <input  type="number" style="text-align:center;" id="cashamt" readonly  ng-model="TenRupeeTotal" />
+                        </div>
+						
+                       
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div class="row">
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                            20X.
+                        </div>
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                <input type="number" style="border:1px solid lightgray;" ng-model="data.Twentyrscount" placeholder="20 coin" ng-change="calculat20(data.Twentyrscount)"  />
+                        </div>
+						<div class="col col-15 responsive-sm item-text-wrap">
+                            <input  type="number" style="text-align:center;" id="cashamt" readonly  ng-model="TwentyRupeeTotal" />
+                        </div>
+                       
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div class="row">
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                            50X.
+                        </div>
+                        <div class="col col-15 responsive-sm item-text-wrap">
+               <input type="number" style="border:1px solid lightgray;" ng-model="data.fiftyrscount" placeholder="50 coin" ng-change="calculat50(data.fiftyrscount)" />
+                        </div>
+						<div class="col col-15 responsive-sm item-text-wrap">
+                            <input  type="number" style="text-align:center;" id="cashamt" readonly  ng-model="fiftyRupeeTotal" />
+                        </div>
+                       
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div class="row">
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                            100X.
+                        </div>
+                        <div class="col col-15 responsive-sm item-text-wrap">
+               <input type="number" style="border:1px solid lightgray;"  ng-model="data.hunrscount" placeholder="100 coin" ng-change="calculat100(data.hunrscount)"  />
+                        </div>
+						<div class="col col-15 responsive-sm item-text-wrap">
+                            <input  type="number" style="text-align:center;" id="cashamt" readonly  ng-model="HunRupeeTotal" />
+                        </div>
+                       
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div class="row">
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                            500X.
+                        </div>
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                            <input type="number" style="border:1px solid lightgray;" ng-model="data.fivehrscount" placeholder="500 coin" ng-change="calculat500(data.fivehrscount)" />
+                        </div>
+						<div class="col col-15 responsive-sm item-text-wrap">
+                            <input  type="number" style="text-align:center;" id="cashamt" readonly  ng-model="fivehunRupeeTotal" />
+                        </div>
+                      
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div class="row">
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                            2000X.
+                        </div>
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                            <input type="number" style="border:1px solid lightgray;" ng-model="data.twoTHrscount"  placeholder="2000 coin" ng-change="calculat2000(data.twoTHrscount)" />
+                        </div>
+						<div class="col col-15 responsive-sm item-text-wrap">
+                            <input  type="number" style="text-align:center;" id="cashamt" readonly  ng-model="twohunRupeeTotal" />
+                        </div>
+                      
+                    </div>
+                </ion-item>
+
+                <!--//UpdateCode-->
+                <ion-item>
+                    <div class="row">
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                            Total Amount
+                        </div>
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                            <h1>{{ data.onerscount + data.tworscount + data.fiverscount+data. tenrscount+ data.Twentyrscount + data.fiftyrscount + data.hunrscount+ data.fivehrscount +data.twoTHrscount}}</h1>
+                        </div>
+                        <div class="col col-28 responsive-sm item-text-wrap">
+                            <h1>{{ OneRupeeTotal + TwoRupeeTotal + FiveRupeeTotal+ TenRupeeTotal+ TwentyRupeeTotal+ fiftyRupeeTotal+ HunRupeeTotal+ fivehunRupeeTotal+ twohunRupeeTotal}}</h1>
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div class="row">
+                        <div class="col col-20 responsive-sm item-text-wrap">
+                            Check Details
+                        </div>
+                        <div class="col col-22 responsive-sm item-text-wrap">
+                            <input type="text" style="border:1px solid lightgray;" ng-model="data.checknumber" placeholder="Check Number" />
+                        </div>
+
+                        <div class="col col-22 responsive-sm item-text-wrap">
+                            <input type="text" style="border:1px solid lightgray;" ng-model="data.checkamount" placeholder="Check Amount" />
+                        </div>
+
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div class="row">
+                        <div class="col col-25 responsive-sm item-text-wrap">
+                         
+                        </div>
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                          
+                        </div>
+                        <div class="col col-15 responsive-sm item-text-wrap">
+                                <button class="button button-stable button-assertive" ng-click=total(data)>Submit</button>
+                         <!--<button class="btn-sm btn-primary" ng-click=total(data)>TOTAL</button>--> 
+                        </div>
+                    </div>
+                </ion-item>
+                <!--//EndUpdate-->
+                     
+      </div>
+  </div>
+</ion-content>
+   
+ </ion-view>
